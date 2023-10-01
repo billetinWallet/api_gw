@@ -1,0 +1,5 @@
+para desplegar:
+
+docker build -t api_gw .  
+
+docker run -p 5000:5000 api_gw 
