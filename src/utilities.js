@@ -65,6 +65,10 @@ export function getRequest(url, path, parameters) {
 	return generalRequest(queryUrl, 'GET');
 }
 
+export function getCleanRequest(url) {
+	return generalRequest(url, 'GET');
+}
+
 /**
  * Merge the schemas in order to avoid conflicts
  * @param {Array<string>} typeDefs
