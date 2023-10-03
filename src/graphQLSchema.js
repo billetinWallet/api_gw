@@ -6,24 +6,29 @@ import { mergeSchemas } from './utilities';
 
 import { kycTypeDef, kycQueries, kycMutations } from './kyc/categories/typeDefs';
 import { transactionTypeDef, transactionQueries, transactionMutations} from './transactions/typeDefs';
+import { CronTypeDef, CronQueries, CronMutations } from './Cron/typeDef';
 
 import kycResolvers from './kyc/categories/resolvers';
 import transactionResolvers from './transactions/resolvers'; 
+import cronResolvers from './Cron/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
 		kycTypeDef,
-		transactionTypeDef
+		transactionTypeDef,
+		CronTypeDef
 	],
 	[
 		kycQueries,
-		transactionQueries
+		transactionQueries,
+		CronQueries
 	],
 	[
 		kycMutations,
-		transactionMutations
+		transactionMutations,
+		CronMutations
 	]
 );
 
@@ -33,6 +38,7 @@ export default makeExecutableSchema({
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		kycResolvers,
-		transactionResolvers
+		transactionResolvers,
+		cronResolvers
 	)
 });
