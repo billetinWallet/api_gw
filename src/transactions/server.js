@@ -1,0 +1,8 @@
+export const url = 'tx-ms.onrender.com'
+export const port = ''
+export const entryPointUsers = 'users'
+export const entryPointRecharges = 'recharges'
+export const entryPointPayments = 'payments'
+export const entryPointInternalTransactions = 'internal_transactions'
+export const entryPointBalances = 'balance'
+export const entryPointMovements = 'movements'
