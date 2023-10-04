@@ -1,5 +1,6 @@
 import { generalRequest, getRequest, getCleanRequest } from '../utilities';
 import { url, port, entryPointUsers, entryPointRecharges, entryPointPayments, entryPointInternalTransactions, entryPointBalances, entryPointMovements } from './server';
+import {urlCron, portCron, entryPointRegisterRecharge, entryPointRegisterPayment} from '../Cron/server';
 
 const URLusers = `https://${url}:${port}/${entryPointUsers}`;
 const URLrecharge = `https://${url}:${port}/${entryPointRecharges}`;
@@ -7,6 +8,7 @@ const URLpayment = `https://${url}:${port}/${entryPointPayments}`;
 const URLinternalTransactions = `https://${url}:${port}/${entryPointInternalTransactions}`;
 const URLbalance = `https://${url}:${port}/${entryPointBalances}`;
 const URLmovement = `https://${url}:${port}/${entryPointMovements}`;
+const URLCronRecharge = `https://${urlCron}:${portCron}/api/${entryPointRegisterRecharge}`;
 
 const resolvers = {
 	Query: {
@@ -48,8 +50,10 @@ const resolvers = {
 		createUser: (_, { user }) =>
 			generalRequest(`${URLusers}`, 'POST', user),
 		
-		createRecharge: (_, { recharge }) =>
-			generalRequest(`${URLrecharge}`, 'POST', recharge),
+		createRecharge: (_, { recharge }) => {
+			return generalRequest(`${URLrecharge}`, 'POST', recharge).then(response => 
+				generalRequest(`${URLCronRecharge}`, 'POST', {"id_recharge":response.id_recharge, "state":response.state}))
+		},
 
 		createPayment: (_, { payment }) =>
 			generalRequest(`${URLpayment}`, 'POST', payment),
