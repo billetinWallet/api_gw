@@ -9,6 +9,7 @@ const URLinternalTransactions = `https://${url}:${port}/${entryPointInternalTran
 const URLbalance = `https://${url}:${port}/${entryPointBalances}`;
 const URLmovement = `https://${url}:${port}/${entryPointMovements}`;
 const URLCronRecharge = `https://${urlCron}:${portCron}/api/${entryPointRegisterRecharge}`;
+const URLCronPayment = `https://${urlCron}:${portCron}/api/${entryPointRegisterPayment}`;
 
 const resolvers = {
 	Query: {
@@ -51,12 +52,18 @@ const resolvers = {
 			generalRequest(`${URLusers}`, 'POST', user),
 		
 		createRecharge: (_, { recharge }) => {
-			return generalRequest(`${URLrecharge}`, 'POST', recharge).then(response => 
+			const res = generalRequest(`${URLrecharge}`, 'POST', recharge)
+			res.then(response => 
 				generalRequest(`${URLCronRecharge}`, 'POST', {"id_recharge":response.id_recharge, "state":response.state}))
+			return res
 		},
 
-		createPayment: (_, { payment }) =>
-			generalRequest(`${URLpayment}`, 'POST', payment),
+		createPayment: (_, { payment }) => {
+			const res =  generalRequest(`${URLpayment}`, 'POST', payment)
+			res.then(response => 
+				generalRequest(`${URLCronPayment}`, 'POST', {id_payment:response.id_payment, state:response.state}));
+			return res
+		},
 
 		createInternalTransaction: (_, { internal_transaction }) =>
 			generalRequest(`${URLinternalTransactions}`, 'POST', internal_transaction),
