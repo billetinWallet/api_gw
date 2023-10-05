@@ -57,6 +57,8 @@ const resolvers = {
 				generalRequest(`${URLCronRecharge}`, 'POST', {"id_recharge":response.id_recharge, "state":response.state}))
 			return res
 		},
+		updateRecharge: (_, { id_recharge, state }) =>
+			generalRequest(`${URLrecharge}/${id_recharge}/${state}`, 'PATCH', {"id_recharge":id_recharge, "state":state}),
 
 		createPayment: (_, { payment }) => {
 			const res =  generalRequest(`${URLpayment}`, 'POST', payment)
@@ -64,6 +66,8 @@ const resolvers = {
 				generalRequest(`${URLCronPayment}`, 'POST', {id_payment:response.id_payment, state:response.state}));
 			return res
 		},
+		updatePayment: (_, { id_payment, state }) =>
+			generalRequest(`${URLpayment}/${id_payment}/${state}`, 'PATCH', {"id_payment":id_payment, "state":state}),
 
 		createInternalTransaction: (_, { internal_transaction }) =>
 			generalRequest(`${URLinternalTransactions}`, 'POST', internal_transaction),
