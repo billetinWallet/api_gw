@@ -1,22 +1,22 @@
 export const transactionTypeDef = `
   type User {
-      id_user: Int!
-      document_number: Int!
+    id_user: Int!
+    document_number: Int!
   }
   input UserInput {
-      document_number: Int!
+    document_number: Int!
   }
   
   type Recharge {
-      id_recharge: ID!
-      amount: Float!
-      datetime: String!
-      state: String!
-      id_user: User!      
+    id_recharge: ID!
+    amount: Float!
+    datetime: String!
+    state: String!
+    id_user: User!      
   }
   input RechargeInput {
-      amount: Float!
-      id_user: Int!
+    amount: Float!
+    id_user: Int!
   }
 
   type Payment {
@@ -86,4 +86,6 @@ export const transactionMutations = `
     createRecharge(recharge: RechargeInput!): Recharge!
     createPayment(payment: PaymentInput!): Payment!
     createInternalTransaction(internal_transaction: InternalTransactionInput!): InternalTransaction!
+    updatePayment(id_payment: ID!, state: String!): Payment!
+    updateRecharge(id_recharge: ID!, state: String!): Recharge!
 `;
