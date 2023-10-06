@@ -8,11 +8,13 @@ import { kycTypeDef, kycQueries, kycMutations } from './kyc/categories/typeDefs'
 import { transactionTypeDef, transactionQueries, transactionMutations} from './transactions/typeDefs';
 import { CronTypeDef, CronQueries, CronMutations } from './Cron/typeDef';
 import { userTypeDef,userQueries,userMutations } from './users/typeDefs';
+import { authTypeDef,authQueries,authMutations } from './auth/typeDef';
 
 import kycResolvers from './kyc/categories/resolvers';
 import transactionResolvers from './transactions/resolvers'; 
 import cronResolvers from './Cron/resolvers';
 import userResolvers from './users/resolvers';
+import authResolvers from './auth/resolvers';
 
 
 // merge the typeDefs
@@ -22,19 +24,22 @@ const mergedTypeDefs = mergeSchemas(
 		kycTypeDef,
 		transactionTypeDef,
 		CronTypeDef,
-		userTypeDef
+		userTypeDef,
+		authTypeDef
 	],
 	[
 		kycQueries,
 		transactionQueries,
 		CronQueries,
-		userQueries
+		userQueries,
+		authQueries
 	],
 	[
 		kycMutations,
 		transactionMutations,
 		CronMutations,
-		userMutations
+		userMutations,
+		authMutations
 	]
 );
 
@@ -46,6 +51,7 @@ export default makeExecutableSchema({
 		kycResolvers,
 		transactionResolvers,
 		cronResolvers,
-		userResolvers
+		userResolvers,
+		authResolvers
 	)
 });
