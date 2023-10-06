@@ -1,7 +1,7 @@
 import { generalRequest, getRequest, getCleanRequest } from '../utilities';
-import { url, port, entryPointAuth, entryPointUser_, entryPointRecharges, entryPointPayments, entryPointInternalTransactions, entryPointBalances, entryPointMovements } from './server';
+import { url, port, entryPointUser_} from './server';
 
-const URLauth = `http://${url}:${port}/${entryPointAuth}`;
+const URLauth = `http://${url}:${port}/${entryPointUser_}`;
 
 const resolvers = {
 	Query: {

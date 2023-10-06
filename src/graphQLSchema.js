@@ -8,7 +8,7 @@ import { kycTypeDef, kycQueries, kycMutations } from './kyc/categories/typeDefs'
 import { transactionTypeDef, transactionQueries, transactionMutations} from './transactions/typeDefs';
 import { CronTypeDef, CronQueries, CronMutations } from './Cron/typeDef';
 import { userTypeDef,userQueries,userMutations } from './users/typeDefs';
-import { authTypeDef,authQueries,authMutations } from './auth/typeDefs';
+import { authTypeDef,authQueries,authMutations } from './auth/typeDef';
 
 import kycResolvers from './kyc/categories/resolvers';
 import transactionResolvers from './transactions/resolvers'; 
