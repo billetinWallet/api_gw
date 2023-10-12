@@ -1,34 +1,31 @@
 export const authTypeDef = `
-  type Register {
-    id_user: Int!,
-    username: String!,
-    password: String!,
-    fullname: String!,
-  }
-  input Register_Input {
-    username: String!,
-    password: String!,
-    fullname: String!,
+  input UserRequest {
+    document_number: String!
+    password: String!
   }
 
-  type Login {
-    id_user: Int!,
-    username: String!,
-    password: String!,
-    fullname: String!,
+  type Token {
+    access_token: String!
+    token_type: String!
   }
-  input Login_Input {
-    username: String!,
-    password: String!,
+
+  type _User {
+    document_number: String!
+    id: Int!
+  }
+
+  input Login {
+    username: String!
+    password: String!
   }
   
    `;
 
 export const authQueries = `
-      allUsers_: [Login]!
-      login(logged_user: Login_Input!): Login!
+      getUser: _User!
   `;
 
 export const authMutations = `
-register(register_user: Register_Input): Register!
+    createToken(login: Login!): Token!
+    newUser(user: UserRequest!): String!
 `;
