@@ -1,3 +1,3 @@
-export const url = 'host.docker.internal'
-export const port = '8082'
+export const url = 'auth-ms.onrender.com'
+export const port = ''
 export const entryPointAuth = 'auth/'
