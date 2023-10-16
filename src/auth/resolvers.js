@@ -9,11 +9,11 @@ const resolvers = {
 			getRequest(`http://${url}:${port}/`, 'GET')
 	},
 	Mutation: {
-		newUser: (_, { UserRequest }) =>
-			generalRequest(`${URLauth}`, 'POST', UserRequest),
+		newUser: (_, { User }) =>
+			generalRequest(`${URLauth}`, 'POST', User),
 		
-		createToken: (_, { login }) =>
-			generalRequest(`${URLauth}/token`, 'POST', login),
+		createToken: (_, { User }) =>
+			generalRequest(`${URLauth}token`, 'POST', User),
 	}
 };
 
