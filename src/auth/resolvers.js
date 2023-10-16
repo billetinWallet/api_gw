@@ -1,19 +1,19 @@
 import { generalRequest, getRequest, getCleanRequest } from '../utilities';
 import { url, port, entryPointAuth} from './server';
 
-const URLauth = `http://${url}:${port}/${entryPointAuth}`;
+const URLauth = `https://${url}:${port}/${entryPointAuth}`;
 
 const resolvers = {
 	Query: {
 		getUser: (_) =>
-			getRequest(`http://${url}:${port}/`, 'GET')
+			getRequest(`https://${url}:${port}/`, 'GET')
 	},
 	Mutation: {
-		newUser: (_, { UserRequest }) =>
-			generalRequest(`${URLauth}`, 'POST', UserRequest),
+		newUser: (_, { User }) =>
+			generalRequest(`${URLauth}`, 'POST', User),
 		
-		createToken: (_, { login }) =>
-			generalRequest(`${URLauth}/token`, 'POST', login),
+		createToken: (_, { User }) =>
+			generalRequest(`${URLauth}token`, 'POST', User),
 	}
 };
 

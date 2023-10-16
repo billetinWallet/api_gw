@@ -57,6 +57,8 @@ export const transactionTypeDef = `
     amount: Float!
     datetime: String!
     id_user: User!
+    state: String! 
+
   }
 
 
@@ -79,6 +81,7 @@ export const transactionQueries = `
       balanceByUserId(id_user: Int!): Balance!
 
       allMovements: [Movement]!
+      movementsByUserId(id_user: Int!): [Movement]!
   `;
 
 export const transactionMutations = `
