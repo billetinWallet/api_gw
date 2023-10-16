@@ -4,18 +4,19 @@ import { makeExecutableSchema } from 'graphql-tools';
 
 import { mergeSchemas } from './utilities';
 
-import { kycTypeDef, kycQueries, kycMutations } from './kyc/categories/typeDefs';
+import { kycTypeDef, kycQueries, kycMutations } from './kyc/typeDefs';
 import { transactionTypeDef, transactionQueries, transactionMutations} from './transactions/typeDefs';
 import { CronTypeDef, CronQueries, CronMutations } from './Cron/typeDef';
 import { userTypeDef,userQueries,userMutations } from './users/typeDefs';
 import { authTypeDef,authQueries,authMutations } from './auth/typeDef';
+import { mqTypeDef,mqQueries,mqMutations } from './wallet_mq/typeDefs';
 
-import kycResolvers from './kyc/categories/resolvers';
+import kycResolvers from './kyc/resolvers';
 import transactionResolvers from './transactions/resolvers'; 
 import cronResolvers from './Cron/resolvers';
 import userResolvers from './users/resolvers';
 import authResolvers from './auth/resolvers';
-
+import mqResolvers from './wallet_mq/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -25,21 +26,24 @@ const mergedTypeDefs = mergeSchemas(
 		transactionTypeDef,
 		CronTypeDef,
 		userTypeDef,
-		authTypeDef
+		authTypeDef,
+		mqTypeDef
 	],
 	[
 		kycQueries,
 		transactionQueries,
 		CronQueries,
 		userQueries,
-		authQueries
+		authQueries,
+		mqQueries
 	],
 	[
 		kycMutations,
 		transactionMutations,
 		CronMutations,
 		userMutations,
-		authMutations
+		authMutations,
+		mqMutations
 	]
 );
 
@@ -52,6 +56,7 @@ export default makeExecutableSchema({
 		transactionResolvers,
 		cronResolvers,
 		userResolvers,
-		authResolvers
+		authResolvers,
+		mqResolvers
 	)
 });
