@@ -1,4 +1,4 @@
-import { generalRequest, getRequest } from '../../utilities';
+import { generalRequest, getRequest } from '../utilities';
 import { url, port, entryPointImage, entryPointStatus } from './server';
 
 const URLimage = `http://${url}:${port}/${entryPointImage}`;
