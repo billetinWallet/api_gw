@@ -41,9 +41,10 @@ const resolvers = {
 			generalRequest(`${URLbalance}/${id_user}`, 'GET'),
 
 		allMovements: (_) =>
-			getCleanRequest(URLmovement, '')
+			getCleanRequest(URLmovement, ''),
 		
-
+		movementsByUserId:(_,{id_user}) =>
+			generalRequest(`${URLmovement}/${id_user}`, 'GET')
 
 
 	},
