@@ -1,4 +1,4 @@
-import { generalRequest, getRequest, getCleanRequest } from '../utilities';
+import { generalRequest, getRequest, generalRequestNoJson } from '../utilities';
 import { url, port, entryPointAuth} from './server';
 
 const URLauth = `https://${url}:${port}/${entryPointAuth}`;
@@ -12,8 +12,9 @@ const resolvers = {
 		newUser: (_, { User }) =>
 			generalRequest(`${URLauth}`, 'POST', User),
 		
-		createToken: (_, { User }) =>
-			generalRequest(`${URLauth}token`, 'POST', User),
+		createToken: (_, { login }) => 
+			generalRequestNoJson(`${URLauth}token`, 'POST', login),
+			
 	}
 };
 

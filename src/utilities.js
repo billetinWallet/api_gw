@@ -29,6 +29,27 @@ export async function generalRequest(url, method, body, fullResponse) {
 	}
 }
 
+export async function generalRequestNoJson(url, method, body, fullResponse) {
+	const parameters = {
+		method,
+		uri: encodeURI(url),
+		headers: {'content-type':'application/x-www-form-urlencoded'},
+		form: body,
+		json: true,
+		resolveWithFullResponse: fullResponse
+	};
+	if (process.env.SHOW_URLS) {
+		// eslint-disable-next-line
+		console.log(url);
+	}
+	console.log(url);
+	try {
+		return await request(parameters);
+	} catch (err) {
+		return err;
+	}
+}
+
 /**
  * Adds parameters to a given route
  * @param {string} url

@@ -13,6 +13,11 @@ export const authTypeDef = `
     document_number: String!
     id: Int!
   }
+
+  input Login {
+    username: String!
+    password: String!
+  }
   
    `;
 
@@ -21,6 +26,6 @@ export const authQueries = `
   `;
 
 export const authMutations = `
-    createToken(User: UserRequest!): Token!
+    createToken(login: Login!): Token!
     newUser(User: UserRequest!): String!
 `;
