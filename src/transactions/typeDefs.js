@@ -68,6 +68,8 @@ export const transactionQueries = `
       allUsers: [User]!
       userById(id_user: Int!): User!
 
+      getUserId(document_number: Int!): User!
+
       allRecharges: [Recharge]!
       rechargeById(id_recharge: ID!): Recharge!
 

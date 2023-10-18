@@ -1,3 +1,3 @@
-export const url = 'auth-ms.onrender.com'
-export const port = ''
+export const urlAuth = 'auth-ms.onrender.com'
+export const portAuth = ''
 export const entryPointAuth = 'auth/'
