@@ -1,7 +1,9 @@
 import { generalRequest, getRequest, generalRequestNoJson } from '../utilities';
-import { url, port, entryPointAuth} from './server';
+import { urlAuth, portAuth, entryPointAuth} from './server';
+import { url, port, entryPointUsers} from '../transactions/server';
 
-const URLauth = `https://${url}:${port}/${entryPointAuth}`;
+const URLauth = `https://${urlAuth}:${portAuth}/${entryPointAuth}`;
+const URLusers = `https://${url}:${port}/${entryPointUsers}`;
 
 const resolvers = {
 	Query: {
@@ -9,8 +11,13 @@ const resolvers = {
 			getRequest(`https://${url}:${port}/`, 'GET')
 	},
 	Mutation: {
-		newUser: (_, { User }) =>
-			generalRequest(`${URLauth}`, 'POST', User),
+		newUser: (_, { User }) => {
+			const res = generalRequest(`${URLauth}`, 'POST', User);
+			res.then(response =>
+				generalRequest(`${URLusers}`, 'POST', {"document_number": parseInt(User.document_number)})
+			)
+			return res
+		},
 		
 		createToken: (_, { login }) => 
 			generalRequestNoJson(`${URLauth}token`, 'POST', login),

@@ -18,7 +18,9 @@ const resolvers = {
 		userById: (_, { id_user }) =>
 			generalRequest(`${URLusers}/${id_user}`, 'GET'),
 
-		
+		getUserId: (_, {document_number}) =>
+			getCleanRequest(`${URLusers}/getId/${document_number}`, 'GET'),
+
 		allRecharges: (_) =>
 			getCleanRequest(URLrecharge, ''),
 		rechargeById: (_, { id_recharge }) =>
