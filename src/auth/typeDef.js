@@ -10,7 +10,6 @@ export const authTypeDef = `
   }
 
   type _User {
-    document_number: String!
     id: Int!
   }
 
