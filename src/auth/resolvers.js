@@ -2,13 +2,13 @@ import { generalRequest, getRequest, generalRequestNoJson } from '../utilities';
 import { urlAuth, portAuth, entryPointAuth} from './server';
 import { url, port, entryPointUsers} from '../transactions/server';
 
-const URLauth = `https://${urlAuth}:${portAuth}/${entryPointAuth}`;
-const URLusers = `https://${url}:${port}/${entryPointUsers}`;
+const URLauth = `http://${urlAuth}:${portAuth}/${entryPointAuth}`;
+const URLusers = `http://${url}:${port}/${entryPointUsers}`;
 
 const resolvers = {
 	Query: {
 		getUser: (_) =>
-			getRequest(`https://${url}:${port}/`, 'GET')
+			getRequest(`http://${url}:${port}/`, 'GET')
 	},
 	Mutation: {
 		newUser: (_, { User }) => {
