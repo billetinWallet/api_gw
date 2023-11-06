@@ -2,12 +2,12 @@ import { generalRequest, getRequest, getCleanRequest } from '../utilities';
 import { url, port, entryPointUsers, entryPointRecharges, entryPointPayments, entryPointInternalTransactions, entryPointBalances, entryPointMovements } from './server';
 import {urlCron, portCron, entryPointRegisterRecharge, entryPointRegisterPayment} from '../Cron/server';
 
-const URLusers = `https://${url}:${port}/${entryPointUsers}`;
-const URLrecharge = `https://${url}:${port}/${entryPointRecharges}`;
-const URLpayment = `https://${url}:${port}/${entryPointPayments}`;
-const URLinternalTransactions = `https://${url}:${port}/${entryPointInternalTransactions}`;
-const URLbalance = `https://${url}:${port}/${entryPointBalances}`;
-const URLmovement = `https://${url}:${port}/${entryPointMovements}`;
+const URLusers = `http://${url}:${port}/${entryPointUsers}`;
+const URLrecharge = `http://${url}:${port}/${entryPointRecharges}`;
+const URLpayment = `http://${url}:${port}/${entryPointPayments}`;
+const URLinternalTransactions = `http://${url}:${port}/${entryPointInternalTransactions}`;
+const URLbalance = `http://${url}:${port}/${entryPointBalances}`;
+const URLmovement = `http://${url}:${port}/${entryPointMovements}`;
 const URLCronRecharge = `https://${urlCron}:${portCron}/api/${entryPointRegisterRecharge}`;
 const URLCronPayment = `https://${urlCron}:${portCron}/api/${entryPointRegisterPayment}`;
 

@@ -1,5 +1,5 @@
-export const url = 'tx-ms.onrender.com'
-export const port = ''
+export const url = '172.17.0.1'
+export const port = '8080'
 export const entryPointUsers = 'users'
 export const entryPointRecharges = 'recharges'
 export const entryPointPayments = 'payments'
