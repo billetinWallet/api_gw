@@ -65,32 +65,32 @@ export const transactionTypeDef = `
   `;
 
 export const transactionQueries = `
-      allUsers: [User]!
-      userById(id_user: Int!): User!
+      allUsers(token: String!): [User]!
+      userById(token: String!, id_user: Int!): User!
 
-      getUserId(document_number: Int!): User!
+      getUserId(token: String!, document_number: Int!): User!
 
-      allRecharges: [Recharge]!
-      rechargeById(id_recharge: ID!): Recharge!
+      allRecharges(token: String!): [Recharge]!
+      rechargeById(token: String!, id_recharge: ID!): Recharge!
 
-      allPayments: [Payment]!
-      paymentById(id_payment: ID!): Payment!
+      allPayments(token: String!): [Payment]!
+      paymentById(token: String!, id_payment: ID!): Payment!
 
-      allInternalTransactions: [InternalTransaction]!
-      internalTransactionById(id_internal_transaction: ID!): InternalTransaction!
+      allInternalTransactions(token: String!): [InternalTransaction]!
+      internalTransactionById(token: String!, id_internal_transaction: ID!): InternalTransaction!
 
-      allBalances: [Balance]!
-      balanceByUserId(id_user: Int!): Balance!
+      allBalances(token: String!): [Balance]!
+      balanceByUserId(token: String!, id_user: Int!): Balance!
 
-      allMovements: [Movement]!
-      movementsByUserId(id_user: Int!): [Movement]!
+      allMovements(token: String!): [Movement]!
+      movementsByUserId(token: String!, id_user: Int!): [Movement]!
   `;
 
 export const transactionMutations = `
-    createUser(user: UserInput!): User!
-    createRecharge(recharge: RechargeInput!): Recharge!
-    createPayment(payment: PaymentInput!): Payment!
-    createInternalTransaction(internal_transaction: InternalTransactionInput!): InternalTransaction!
-    updatePayment(id_payment: ID!, state: String!): Payment!
-    updateRecharge(id_recharge: ID!, state: String!): Recharge!
+    createUser(token: String!, user: UserInput!): User!
+    createRecharge(token: String!, recharge: RechargeInput!): Recharge!
+    createPayment(token: String!, payment: PaymentInput!): Payment!
+    createInternalTransaction(token: String!, internal_transaction: InternalTransactionInput!): InternalTransaction!
+    updatePayment(token: String!, id_payment: ID!, state: String!): Payment!
+    updateRecharge(token: String!, id_recharge: ID!, state: String!): Recharge!
 `;
