@@ -29,6 +29,27 @@ export async function generalRequest(url, method, body, fullResponse) {
 	}
 }
 
+export async function generalRequestHeader(url, method, body, token, fullResponse) {
+	const parameters = {
+		method,
+		uri: encodeURI(url),
+		headers: {'Authorization': token},
+		body,
+		json: true,
+		resolveWithFullResponse: fullResponse
+	};
+	if (process.env.SHOW_URLS) {
+		// eslint-disable-next-line
+		console.log(url);
+	}
+	console.log(url);
+	try {
+		return await request(parameters);
+	} catch (err) {
+		return err;
+	}
+}
+
 export async function generalRequestNoJson(url, method, body, fullResponse) {
 	const parameters = {
 		method,
@@ -88,6 +109,10 @@ export function getRequest(url, path, parameters) {
 
 export function getCleanRequest(url) {
 	return generalRequest(url, 'GET');
+}
+
+export function getCleanRequestWithHeader(url, token){
+	return generalRequestHeader(url, 'GET', '', token)
 }
 
 /**
